@@ -6,18 +6,15 @@ function run(command) {
   return execSync(command, { encoding: 'utf8' }).trim()
 }
 
-function findDmg(distDir) {
-  const explicit = process.argv[2]
-  if (explicit) return explicit
+function findDmgs(distDir) {
+  const explicit = process.argv.slice(2)
+  if (explicit.length > 0) return explicit
 
-  const matches = readdirSync(distDir).filter((name) => name.endsWith('-mac-universal.dmg'))
+  const matches = readdirSync(distDir).filter((name) => /-(arm64|x64)\.dmg$/.test(name))
   if (matches.length === 0) {
-    throw new Error(`No *-mac-universal.dmg found in ${distDir}`)
+    throw new Error(`No *-{arm64,x64}.dmg found in ${distDir}`)
   }
-  if (matches.length > 1) {
-    throw new Error(`Multiple macOS DMG artifacts found: ${matches.join(', ')}`)
-  }
-  return join(distDir, matches[0])
+  return matches.map((name) => join(distDir, name))
 }
 
 function parseMinimumVersion(value) {
@@ -51,10 +48,13 @@ function findAppBundle(mountPoint) {
   return join(mountPoint, app.name)
 }
 
-function main() {
-  const distDir = join(process.cwd(), 'dist')
-  const dmgPath = findDmg(distDir)
+function expectedArchitecture(dmgPath) {
+  if (dmgPath.endsWith('-arm64.dmg')) return 'arm64'
+  if (dmgPath.endsWith('-x64.dmg')) return 'x86_64'
+  throw new Error(`Unable to infer architecture from ${dmgPath}`)
+}
 
+function verifyDmg(dmgPath) {
   console.log(`Verifying macOS artifact: ${dmgPath}`)
 
   const attachOutput = run(`hdiutil attach -nobrowse -readonly "${dmgPath}"`)
@@ -92,14 +92,25 @@ function main() {
 
     const lipoInfo = run(`lipo -info "${executablePath}"`)
     console.log(lipoInfo)
-    if (!/x86_64/.test(lipoInfo) || !/arm64/.test(lipoInfo)) {
-      throw new Error(`Expected universal binary (x86_64 + arm64), got: ${lipoInfo}`)
-    }
 
-    console.log('macOS artifact verification passed')
+    const expected = expectedArchitecture(dmgPath)
+    if (!lipoInfo.includes(expected)) {
+      throw new Error(`Expected ${expected} binary, got: ${lipoInfo}`)
+    }
   } finally {
     run(`hdiutil detach "${mountPoint}" -quiet`)
   }
+}
+
+function main() {
+  const distDir = join(process.cwd(), 'dist')
+  const dmgPaths = findDmgs(distDir)
+
+  for (const dmgPath of dmgPaths) {
+    verifyDmg(dmgPath)
+  }
+
+  console.log(`macOS artifact verification passed (${dmgPaths.length} DMG(s))`)
 }
 
 try {

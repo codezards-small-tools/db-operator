@@ -45,10 +45,10 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=8192
 
-      - name: Package macOS universal DMG
+      - name: Package macOS DMG (arm64 + x64)
         run: npx electron-builder --mac dmg --publish never
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: false
 
-      - name: Verify macOS artifact
+      - name: Verify macOS artifacts
         run: node scripts/verify-macos-artifact.mjs

@@ -64,11 +64,13 @@ npm run dev:web
 
 ### macOS
 
-**System requirements:** macOS 12.0 (Monterey) or later, including macOS 15.x (Sequoia) and newer releases. Release builds ship as a universal DMG (`*-mac-universal.dmg`) for both Apple Silicon and Intel Macs.
+**System requirements:** macOS 12.0 (Monterey) or later, including macOS 15.x (Sequoia) and newer releases. Release builds ship separate DMGs for Apple Silicon (`*-arm64.dmg`) and Intel (`*-x64.dmg`).
 
 **Install from GitHub Release:**
 
-1. Download `db-operator-x.y.z-mac-universal.dmg` from [Releases](https://github.com/codezards-small-tools/db-operator/releases)
+1. Download the DMG matching your Mac from [Releases](https://github.com/codezards-small-tools/db-operator/releases):
+   - Apple Silicon (M1/M2/M3/M4): `db-operator-x.y.z-arm64.dmg`
+   - Intel: `db-operator-x.y.z-x64.dmg`
 2. Open the DMG and drag **DB Operator** to Applications
 3. Because the app is not code-signed, macOS may block the first launch. Right-click the app and choose **Open**, or allow it under **System Settings → Privacy & Security**
 
