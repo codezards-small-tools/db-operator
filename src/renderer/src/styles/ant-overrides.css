@@ -1,0 +1,371 @@
+/* Buttons */
+.app-btn.ant-btn {
+  font-weight: 500;
+  box-shadow: none;
+  gap: 6px;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.app-btn.ant-btn-sm {
+  height: var(--btn-height-sm);
+  padding-inline: 10px;
+  font-size: 13px;
+  border-radius: var(--radius-sm);
+}
+
+.app-btn.ant-btn-default:not(.ant-btn-sm) {
+  height: var(--btn-height-md);
+  border-radius: var(--radius-sm);
+}
+
+.app-btn--primary.ant-btn-primary:not(:disabled):hover {
+  background: var(--color-primary-hover) !important;
+}
+
+.app-btn--primary.ant-btn-primary:disabled,
+.app-btn--primary.ant-btn-primary.ant-btn-disabled {
+  color: var(--btn-primary-disabled-fg) !important;
+  background: var(--btn-primary-disabled-bg) !important;
+  border-color: transparent !important;
+  opacity: 1 !important;
+}
+
+.app-btn--secondary.ant-btn-default:not(:disabled) {
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+  background: var(--surface-raised);
+}
+
+.app-btn--secondary.ant-btn-default:not(:disabled):hover {
+  border-color: var(--border-color) !important;
+  color: var(--text-primary) !important;
+  background: var(--surface-sunken) !important;
+}
+
+.app-btn--ghost.ant-btn-default:not(:disabled) {
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+  background: transparent;
+}
+
+.app-btn--ghost.ant-btn-default:not(:disabled):hover {
+  border-color: var(--accent-border) !important;
+  color: var(--color-primary) !important;
+  background: var(--accent-bg) !important;
+}
+
+.app-btn--icon.ant-btn,
+.app-btn--danger.ant-btn {
+  width: var(--btn-height-sm);
+  min-width: var(--btn-height-sm);
+  height: var(--btn-height-sm);
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+}
+
+.app-btn--icon.ant-btn:not(:disabled):hover,
+.app-btn--danger.ant-btn:not(:disabled):hover {
+  background: var(--surface-sunken) !important;
+}
+
+.app-btn--icon.ant-btn:not(:disabled):hover {
+  color: var(--text-primary) !important;
+}
+
+.app-btn--danger.ant-btn:not(:disabled):hover {
+  color: var(--color-danger) !important;
+}
+
+/* Tree */
+.ant-tree .ant-tree-node-content-wrapper {
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.ant-tree .ant-tree-node-content-wrapper:hover {
+  background: var(--surface-sunken) !important;
+}
+
+.ant-tree .ant-tree-treenode {
+  padding: 2px 0;
+}
+
+.ant-tree .ant-tree-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schema-tree-view.ant-tree .ant-tree-treenode {
+  display: flex;
+  padding: 0 !important;
+  align-items: center !important;
+}
+
+.schema-tree-view.ant-tree .ant-tree-indent {
+  align-self: center;
+}
+
+.schema-tree-view.ant-tree .ant-tree-switcher {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  align-self: center !important;
+  width: 12px !important;
+  height: 18px !important;
+  margin-inline-end: 0 !important;
+  line-height: 1 !important;
+}
+
+.schema-tree-view.ant-tree .ant-tree-switcher::before {
+  width: 12px !important;
+  height: 18px !important;
+  top: 50% !important;
+  transform: translateY(-50%);
+}
+
+.schema-tree-view.ant-tree .ant-tree-switcher-icon {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 9px;
+  line-height: 1 !important;
+  vertical-align: middle !important;
+}
+
+.schema-tree-view.ant-tree .ant-tree-switcher-icon svg {
+  display: block;
+}
+
+.schema-tree-view.ant-tree .ant-tree-indent-unit {
+  width: 12px !important;
+}
+
+.schema-tree-view.ant-tree .ant-tree-node-content-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 0 4px !important;
+  min-height: 18px;
+  line-height: 1;
+}
+
+.schema-tree-view.ant-tree .ant-tree-iconEle {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: auto !important;
+  height: 18px;
+  margin-inline-end: 0 !important;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.schema-tree-view.ant-tree .ant-tree-title {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+/* List */
+.ant-list .ant-list-item {
+  border-block-end: none !important;
+}
+
+.ant-list-item-meta-title {
+  margin-bottom: 0 !important;
+  color: var(--text-primary) !important;
+}
+
+.ant-list-item-meta-description {
+  color: var(--text-secondary) !important;
+  font-size: 12px !important;
+}
+
+/* Table */
+.ant-table-wrapper .ant-table-thead > tr > th {
+  background: var(--surface-sunken) !important;
+  color: var(--text-secondary) !important;
+  font-weight: 600;
+  font-size: 12px;
+  border-bottom: 1px solid var(--border-color) !important;
+}
+
+.ant-table-wrapper .ant-table-tbody > tr > td {
+  border-bottom: 1px solid var(--border-color-light) !important;
+}
+
+.ant-table-wrapper .ant-table-tbody > tr:nth-child(even) > td {
+  background: var(--surface-sunken);
+}
+
+.ant-table-wrapper .ant-table-tbody > tr:hover > td {
+  background: var(--accent-bg) !important;
+}
+
+.ant-table-wrapper .ant-table {
+  background: transparent;
+}
+
+.app-table--compact.ant-table-wrapper .ant-table-thead > tr > th {
+  padding: 2px 8px !important;
+  font-size: 11px;
+  line-height: 1.3;
+  white-space: nowrap;
+}
+
+.app-table--compact.ant-table-wrapper .ant-table-tbody > tr > td {
+  padding: 1px 8px !important;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.app-table--compact.ant-table-wrapper .ant-table-cell {
+  font-family: ui-monospace, 'JetBrains Mono', 'Fira Code', monospace;
+}
+
+.app-table--compact.ant-table-wrapper .ant-table-pagination {
+  margin: 6px 0 0 !important;
+}
+
+.app-table--compact.ant-table-wrapper .ant-pagination {
+  font-size: 12px;
+}
+
+/* Scroll chrome: edge fades + scrollbars visible only while scrolling */
+.table-scroll-shell {
+  position: relative;
+}
+
+.table-scroll-shell__fades {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.table-scroll-shell__fade {
+  position: absolute;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  pointer-events: none;
+}
+
+.table-scroll-shell--fade-top .table-scroll-shell__fade--top,
+.table-scroll-shell--fade-bottom .table-scroll-shell__fade--bottom,
+.table-scroll-shell--fade-left .table-scroll-shell__fade--left,
+.table-scroll-shell--fade-right .table-scroll-shell__fade--right {
+  opacity: 1;
+}
+
+.table-scroll-shell__fade--top {
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: linear-gradient(to bottom, var(--table-scroll-fade), transparent);
+}
+
+.table-scroll-shell__fade--bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: linear-gradient(to top, var(--table-scroll-fade), transparent);
+}
+
+.table-scroll-shell__fade--left {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 14px;
+  background: linear-gradient(to right, var(--table-scroll-fade), transparent);
+}
+
+.table-scroll-shell__fade--right {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 14px;
+  background: linear-gradient(to left, var(--table-scroll-fade), transparent);
+}
+
+.table-scroll-shell .ant-table-body,
+.table-scroll-shell .ant-table-content {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.table-scroll-shell .ant-table-body::-webkit-scrollbar,
+.table-scroll-shell .ant-table-content::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.table-scroll-shell.table-scroll-shell--scrolling .ant-table-body,
+.table-scroll-shell.table-scroll-shell--scrolling .ant-table-content {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) transparent;
+}
+
+.table-scroll-shell.table-scroll-shell--scrolling .ant-table-body::-webkit-scrollbar,
+.table-scroll-shell.table-scroll-shell--scrolling .ant-table-content::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.table-scroll-shell.table-scroll-shell--scrolling .ant-table-body::-webkit-scrollbar-thumb,
+.table-scroll-shell.table-scroll-shell--scrolling .ant-table-content::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+}
+
+.table-scroll-shell .ant-table-body > table {
+  margin-bottom: var(--table-scroll-gutter);
+}
+
+.panel-section.table-detail .table-scroll-shell {
+  --table-scroll-fade: var(--surface-raised);
+}
+
+.result-tab-content .table-scroll-shell {
+  --table-scroll-fade: var(--surface-base);
+}
+
+.app-table--compact.ant-table-wrapper .ant-table-header {
+  overflow: hidden !important;
+}
+
+.app-table__resize-handle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 6px;
+  cursor: col-resize;
+  z-index: 1;
+  touch-action: none;
+}
+
+.app-table__resize-handle:hover {
+  background: color-mix(in srgb, var(--color-primary) 22%, transparent);
+}
+
+/* Tags */
+.tag-mysql {
+  background: color-mix(in srgb, var(--color-mysql) 12%, transparent) !important;
+  border-color: color-mix(in srgb, var(--color-mysql) 30%, transparent) !important;
+  color: var(--color-mysql) !important;
+}
+
+.tag-pg {
+  background: color-mix(in srgb, var(--color-pg) 12%, transparent) !important;
+  border-color: color-mix(in srgb, var(--color-pg) 30%, transparent) !important;
+  color: var(--color-pg) !important;
+}
