@@ -1,6 +1,6 @@
 {
   "name": "db-operator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Cross-platform database management client for MySQL and PostgreSQL",
   "main": "./out/main/index.js",
   "author": "example.com",
