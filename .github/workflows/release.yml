@@ -94,7 +94,7 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=8192
 
       - name: Package macOS DMG (arm64 + x64)
-        run: npx electron-builder --mac dmg --publish never
+        run: npx electron-builder --mac dmg --arm64 --x64 --publish never
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: false
 

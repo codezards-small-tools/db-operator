@@ -14,6 +14,13 @@ function findDmgs(distDir) {
   if (matches.length === 0) {
     throw new Error(`No *-{arm64,x64}.dmg found in ${distDir}`)
   }
+
+  const hasArm64 = matches.some((name) => name.endsWith('-arm64.dmg'))
+  const hasX64 = matches.some((name) => name.endsWith('-x64.dmg'))
+  if (!hasArm64 || !hasX64) {
+    throw new Error(`Expected both arm64 and x64 DMGs, found: ${matches.join(', ')}`)
+  }
+
   return matches.map((name) => join(distDir, name))
 }
 
