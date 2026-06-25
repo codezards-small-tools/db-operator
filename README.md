@@ -64,6 +64,16 @@ npm run dev:web
 
 ### macOS
 
+**System requirements:** macOS 12.0 (Monterey) or later, including macOS 15.x (Sequoia) and newer releases. Release builds ship as a universal DMG (`*-mac-universal.dmg`) for both Apple Silicon and Intel Macs.
+
+**Install from GitHub Release:**
+
+1. Download `db-operator-x.y.z-mac-universal.dmg` from [Releases](https://github.com/codezards-small-tools/db-operator/releases)
+2. Open the DMG and drag **DB Operator** to Applications
+3. Because the app is not code-signed, macOS may block the first launch. Right-click the app and choose **Open**, or allow it under **System Settings → Privacy & Security**
+
+**Development:**
+
 ```bash
 npm install
 npm run dev
@@ -133,8 +143,9 @@ Other distros: install the equivalent of `libnspr4`, `libnss3`, `libasound2`, an
 ```bash
 npm run build          # typecheck + bundle
 npm run build:win      # Windows installer (run on Windows)
-npm run build:mac      # macOS dmg (run on macOS)
-npm run build:linux    # Linux AppImage/deb/snap
+npm run build:mac      # macOS universal dmg (run on macOS)
+npm run build:linux    # Linux AppImage/deb
+npm run verify:macos   # verify macOS DMG artifact (run on macOS after build)
 ```
 
 ## Project layout

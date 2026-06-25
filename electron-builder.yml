@@ -22,17 +22,21 @@ nsis:
   uninstallDisplayName: ${productName}
   createDesktopShortcut: always
 mac:
+  category: public.app-category.developer-tools
+  minimumSystemVersion: "12.0"
+  target:
+    - target: dmg
+      arch: universal
+  entitlements: build/entitlements.mac.plist
   entitlementsInherit: build/entitlements.mac.plist
   extendInfo:
-    - NSCameraUsageDescription: Application requests access to the device's camera.
-    - NSMicrophoneUsageDescription: Application requests access to the device's microphone.
-    - NSDocumentsFolderUsageDescription: Application requests access to the user's Documents folder.
-    - NSDownloadsFolderUsageDescription: Application requests access to the user's Downloads folder.
+    LSMinimumSystemVersion: "12.0"
   notarize: false
   identity: null
   gatekeeperAssess: false
+  hardenedRuntime: false
 dmg:
-  artifactName: ${name}-${version}.${ext}
+  artifactName: ${name}-${version}-mac-universal.${ext}
 linux:
   target:
     - AppImage

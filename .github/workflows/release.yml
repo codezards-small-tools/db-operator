@@ -74,7 +74,7 @@ jobs:
           if-no-files-found: error
 
   build-macos:
-    runs-on: macos-latest
+    runs-on: macos-15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -93,16 +93,19 @@ jobs:
         env:
           NODE_OPTIONS: --max-old-space-size=8192
 
-      - name: Package macOS DMG
+      - name: Package macOS universal DMG
         run: npx electron-builder --mac dmg --publish never
         env:
           CSC_IDENTITY_AUTO_DISCOVERY: false
+
+      - name: Verify macOS artifact
+        run: node scripts/verify-macos-artifact.mjs
 
       - name: Upload macOS artifacts
         uses: actions/upload-artifact@v4
         with:
           name: macos
-          path: dist/*.dmg
+          path: dist/*-mac-universal.dmg
           if-no-files-found: error
 
   release:
